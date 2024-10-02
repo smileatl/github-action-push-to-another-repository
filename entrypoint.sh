@@ -147,6 +147,10 @@ git config --global --add safe.directory "$CLONE_DIR"
 git config --global --add safe.directory "$TEMP_DIR"
 
 # 获取最近一次 commit 的消息
+echo "git log -1"
+git log -1
+echo "git log -1 --pretty=%B"
+git log -1 --pretty=%B
 ORIGIN_COMMIT=$(git log -1 --pretty=%B)
 # 回显 ORIGIN_COMMIT
 echo "The latest commit message is: $ORIGIN_COMMIT"
