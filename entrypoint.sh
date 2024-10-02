@@ -146,14 +146,8 @@ ls -la
 git config --global --add safe.directory "$CLONE_DIR"
 git config --global --add safe.directory "$TEMP_DIR"
 
-# 获取最近一次 commit 的消息
-echo "git log -2"
-git log -2
-echo "git log -1"
-git log -1
-echo "git log -1 --pretty=%B"
-git log -1 --pretty=%B
-ORIGIN_COMMIT=$(git log -1 --pretty=%B)
+# 获取 $GITHUB_SHA 对应的 commit message
+ORIGIN_COMMIT=$(gh api repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA -q .commit.message)
 # 回显 ORIGIN_COMMIT
 echo "The latest commit message is: $ORIGIN_COMMIT"
 COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
