@@ -147,6 +147,8 @@ git config --global --add safe.directory "$CLONE_DIR"
 git config --global --add safe.directory "$TEMP_DIR"
 
 # 获取最近一次 commit 的消息
+echo "git log -2"
+git log -2
 echo "git log -1"
 git log -1
 echo "git log -1 --pretty=%B"
