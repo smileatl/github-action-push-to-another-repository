@@ -142,7 +142,12 @@ cd "$CLONE_DIR"
 echo "[+] Files that will be pushed"
 ls -la
 
-ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
+# 将临时目录标记为安全
+git config --global --add safe.directory "$CLONE_DIR"
+git config --global --add safe.directory "$TEMP_DIR"
+
+# 获取最近一次 commit 的消息
+ORIGIN_COMMIT=$(git log -1 --pretty=%B)
 COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
 COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
 
