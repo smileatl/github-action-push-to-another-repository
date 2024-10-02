@@ -148,6 +148,8 @@ git config --global --add safe.directory "$TEMP_DIR"
 
 # 获取最近一次 commit 的消息
 ORIGIN_COMMIT=$(git log -1 --pretty=%B)
+# 回显 ORIGIN_COMMIT
+echo "The latest commit message is: $ORIGIN_COMMIT"
 COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
 COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
 
